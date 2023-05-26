@@ -8,6 +8,7 @@
 
 :root {
   font-size: 62.5%;
+  --link-color: -webkit-linear-gradient(45deg, #54d8e1, #bb8bd8);
   --text-color: white;
   --bg-url: url(./assets/BackgroundDesktopDark.jpg);
   --stroke-color: rgba(255, 255, 255, 0.5);
@@ -20,6 +21,8 @@
 }
 
 .light {
+  --link-color: -webkit-linear-gradient(45deg, #54d8e1, #bb8bd8);
+  --link-color: -webkit-linear-gradient(45deg, #881cb4, #2222a3);
   --mobile-desktop: url(./assets/BackgroundLight.jpg);
   --text-color: black;
   --bg-url: url(./assets/BackgroundDesktopLight.jpg);
@@ -32,15 +35,15 @@
 }
 
 body {
-  height: calc(100% -200px);
-  background: var(--bg-url) no-repeat top center/cover;
+  height: 100%;
+  background: var(--bg-url) center top/cover no-repeat;
   font-family: "Poppins";
   transition: all 0.3s;
 }
 
 .box {
   width: 100%;
-  max-width: 34rem;
+  max-width: 38rem;
   margin: 0px auto 0px;
   padding: 0 24px;
 }
@@ -49,6 +52,7 @@ body {
   padding: 20px;
   text-align: center;
 }
+
 #profile img {
   width: 12rem;
   border-radius: 50%;
@@ -109,6 +113,7 @@ body {
   from {
     left: 0;
   }
+
   to {
     left: 51%;
   }
@@ -118,6 +123,7 @@ body {
   from {
     left: 51%;
   }
+
   to {
     left: 0;
   }
@@ -125,11 +131,12 @@ body {
 
 /* lista */
 ul {
+  height: 30rem;
   list-style: none;
 
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 
   padding: 24px 0px;
 }
@@ -150,12 +157,18 @@ ul li a {
   text-decoration: none;
   font-weight: 500px;
   font-size: 1.4rem;
-  transition: background 0.2s;
+  transition: all .2s linear;
 }
 
 ul li a:hover {
-  border: 1.8px solid var(--stroke-color);
+  border: 1px solid var(--stroke-color);
   background-color: var(--hover-color);
+}
+
+ul:has(li a:hover) li a:not(:hover) {
+  scale: .98;
+  opacity: .4;
+  background-color: rgba(255, 255, 255, 0.0);
 }
 
 .social-links {
@@ -165,6 +178,7 @@ ul li a:hover {
 
   font-size: 24px;
 }
+
 .social-links a {
   display: flex;
   justify-content: center;
@@ -181,13 +195,22 @@ footer {
   padding: 8px 0px;
   text-align: center;
   font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   body {
     background: var(--mobile-desktop) no-repeat top center/cover;
   }
 }
+
 .box {
   visibility: hidden;
+}
+
+footer a:active {
+  background: var(--link-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
